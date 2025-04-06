@@ -80,6 +80,29 @@ docker-compose build
 docker-compose up -d
 ```
 
+2.1. MongoDB 데이터 초기화
+- MongoDB Compass 또는 MongoDB CLI를 사용하여 데이터를 초기화합니다.
+- MongoDB Compass 사용 시:
+  1. MongoDB Compass를 설치하고 실행
+  2. 연결 문자열: `mongodb://localhost:27017`
+  3. `toeic-voca` 데이터베이스 생성
+  4. 필요한 컬렉션(users, words 등) 생성 및 초기 데이터 입력
+
+- MongoDB CLI 사용 시:
+```bash
+# MongoDB CLI 접속
+mongosh mongodb://localhost:27017
+
+# 데이터베이스 생성 및 사용
+use toeic-voca
+
+# 컬렉션 생성 및 데이터 입력 예시
+db.words.insertMany([
+  { word: "example", meaning: "예시", level: 1 },
+  { word: "test", meaning: "시험", level: 2 }
+])
+```
+
 3. 애플리케이션 접속
 - http://localhost 또는 https://localhost (SSL 설정 시)
 
